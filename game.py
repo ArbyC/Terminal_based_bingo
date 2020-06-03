@@ -1,6 +1,6 @@
 from board import Board
 from call import player_caller, computer_caller
-from move import place, computer_place
+from move import place
 from win_condition import check
 import random
 import numpy as np
@@ -8,17 +8,23 @@ import numpy as np
 
 board_player = Board().new_board()
 board_computer = Board().new_board()
+calling = list(range(1, 26))
+i = 2
+
 
 while True:
-    computer_place(board_player, 0)
-    if check(board_computer):
-        print("Computer won")
-        break
-    
-    computer_place(board_computer, 100)
+    if i % 2 == 0:
+        print(board_player)
+        called = player_caller(calling)
+        i +=1
+    else:
+        called = computer_caller(calling)
+        i += 1
+    place(board_player, 0, called)
     if check(board_player):
-        print("Player won")
+        print("BINGO!! Player won")
         break
-
-
-# print(board_computer, "\n", board_player)
+    place(board_computer, 100, called)
+    if check(board_computer):
+        print("BINGO!! Computer won")
+        break

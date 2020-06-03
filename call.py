@@ -1,9 +1,5 @@
 import random
-
-
-calling = list(range(1, 26))
-
-
+import sys
 def computer_caller(calling):
     if len(calling) != 0:
         random.shuffle(calling)
@@ -13,24 +9,25 @@ def computer_caller(calling):
 def player_caller(calling):    
     player_call = input('Enter your call: ')
     if str(player_call) == "Q":
-        return "Exit"
+        return exit() 
     while True:
         try:
             if str(player_call) == "Q":
-                return "Exit"
+                return exit() 
             else:
                 while True:
                     if int(player_call) not in calling:
                         print("Already used. Try another number")
                         player_call = input('Enter your call: ')
                         if str(player_call) == "Q":
-                            return "Exit"
+                            return exit() 
                     else:
-                        return calling.remove(int(player_call))
+                        calling.remove(int(player_call))
+                        return int(player_call)
         except ValueError:
             print("Not a number")
             player_call = input('Enter your call: ')
             if str(player_call) == "Q":
-                return "Exit"
+                return exit() 
         else:
             break

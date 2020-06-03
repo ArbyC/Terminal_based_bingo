@@ -25,3 +25,5 @@ class Board():
         random.shuffle(self.board)
         return (self.board).reshape(5,5)
 
+    
+
