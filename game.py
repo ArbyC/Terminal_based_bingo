@@ -6,7 +6,7 @@ import random
 import numpy as np
 
 
-board_player = Board().new_board()
+board_player = Board().write_board()
 board_computer = Board().new_board()
 calling = list(range(1, 26))
 i = 2
