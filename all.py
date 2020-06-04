@@ -41,7 +41,10 @@ class Board():
 
 def place(board, player, called):
     placement = list((zip(*np.where(board == called))))
-    board[placement[0]] = player
+    try:
+        board[placement[0]] = player
+    except IndexError:
+        print(f"The called value is {called}, the board is like this {board}, the player is {player}")
     return board
 
 def computer_caller(calling):
@@ -106,8 +109,19 @@ def check(board):
     else:
         return False
 
-def main():
-    board_player = Board().new_board()
+
+def main(board_type):
+    
+
+    if board_type.lower() == "y":
+        board_player = Board().write_board()
+    elif board_type.lower() == "n":
+        board_player = Board().new_board()
+    else:
+        print("I didn't understand. Restart.")
+        exit()
+    print("\n WELCOME TO BINGO")
+    print("\n    NEW GAME \n Enter Q to quit\n")
     board_computer = Board().new_board()
     calling = list(range(1, 26))
     i = 2
@@ -115,13 +129,17 @@ def main():
 
     while True:
         if i % 2 == 0:
-            print(board_player)
+            print(board_player,"\n")
             called = player_caller(calling)
             i +=1
         else:
             called = computer_caller(calling)
             i += 1
         place(board_player, 0, called)
+
+        if check(board_computer) and check(board_player):
+            return ("It's a tie")
+
         if check(board_player):
             print("BINGO!! Player won")
             break
@@ -134,4 +152,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    board_type = input("Wanna create your own board(Y/N)?: ")
+    while True:
+        main(board_type)
