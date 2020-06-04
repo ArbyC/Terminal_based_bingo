@@ -107,7 +107,7 @@ def check(board):
         return False
 
 def main():
-    board_player = Board().write_board()
+    board_player = Board().new_board()
     board_computer = Board().new_board()
     calling = list(range(1, 26))
     i = 2
@@ -129,6 +129,9 @@ def main():
         if check(board_computer):
             print("BINGO!! Computer won")
             break
+        
+    
+
 
 if __name__ == "__main__":
     main()
