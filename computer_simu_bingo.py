@@ -1,6 +1,9 @@
 import bingo
 
 def main():
+    """
+    Computer plays with computer
+    """
     board_player = bingo.Board().new_board()
     board_computer = bingo.Board().new_board()
     calling = list(range(1, 26))
