@@ -1,20 +1,20 @@
-import all
+import bingo
 
 def main():
-    board_player = all.Board().new_board()
-    board_computer = all.Board().new_board()
+    board_player = bingo.Board().new_board()
+    board_computer = bingo.Board().new_board()
     calling = list(range(1, 26))
     while True:
-        called = all.computer_caller(calling)
-        all.place(board_player, 0, called)
-        all.place(board_computer, 100, called)
+        called = bingo.computer_caller(calling)
+        bingo.place(board_player, 0, called)
+        bingo.place(board_computer, 100, called)
 
         
-        if all.check(board_computer) and all.check(board_player):
+        if bingo.check(board_computer) and bingo.check(board_player):
             return ("It's a tie")
-        if all.check(board_computer):
+        if bingo.check(board_computer):
             return ("BINGO!! Computer won")
-        if all.check(board_player):
+        if bingo.check(board_player):
             return ("BINGO!! Player won")
 
 
